@@ -2,12 +2,13 @@
 
 :root {
   color-scheme: light;
-  --background: #f5f5f7;
-  --foreground: #1d1d1f;
+  --background: #f8fafd;
+  --foreground: #202124;
   --surface: #ffffff;
-  --muted: #6e6e73;
-  --line: #d2d2d7;
-  --accent: #06c;
+  --muted: #5f6368;
+  --line: #dadce0;
+  --accent: #1a73e8;
+  --accent-soft: #e8f0fe;
 }
 
 @theme inline {
@@ -26,7 +27,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
 }
 
 a {
@@ -44,12 +45,12 @@ button {
 }
 
 .store-shell {
-  width: min(1120px, calc(100% - 64px));
+  width: min(1200px, calc(100% - 64px));
   margin: 0 auto;
 }
 
 .store-header {
-  min-height: 76px;
+  min-height: 80px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -58,8 +59,9 @@ button {
 
 .store-wordmark {
   width: fit-content;
-  font-size: 20px;
-  font-weight: 650;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.7px;
 }
 
 .store-wordmark span {
@@ -90,10 +92,10 @@ button {
 
 .store-account form button {
   min-height: 36px;
-  padding: 0 15px;
+  padding: 0 18px;
   border: 0;
   border-radius: 18px;
-  background: var(--foreground);
+  background: var(--accent);
   color: #fff;
   cursor: pointer;
   font-size: 13px;
@@ -101,28 +103,34 @@ button {
 }
 
 .store-account form button:hover {
-  background: #424245;
+  background: #1765cc;
   transform: translateY(-1px);
 }
 
 .store-intro {
-  padding: 76px 0 52px;
+  padding: 72px 0 52px;
   border-bottom: 1px solid var(--line);
   animation: intro-enter 520ms ease-out both;
 }
 
 .store-eyebrow {
+  display: inline-flex;
   margin: 0 0 18px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
   color: var(--accent);
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .store-intro h1 {
   max-width: 780px;
   margin: 0;
-  font-size: 58px;
-  font-weight: 600;
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -1.8px;
   line-height: 1.12;
 }
 
@@ -166,7 +174,7 @@ button {
 
 .catalog-heading h2 {
   margin: 0;
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 600;
 }
 
@@ -182,14 +190,17 @@ button {
 }
 
 .catalog-add-link {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--accent-soft);
   color: var(--accent);
   font-size: 13px;
   font-weight: 600;
+  transition: background 150ms ease;
 }
 
 .catalog-add-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  background: #d2e3fc;
 }
 
 .product-grid {
@@ -201,11 +212,11 @@ button {
 .product-card {
   min-width: 0;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.055);
-  border-radius: 8px;
+  border: 1px solid #e8eaed;
+  border-radius: 20px;
   background: var(--surface);
   animation: card-enter 480ms ease-out both;
-  transition: box-shadow 180ms ease, transform 180ms ease;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .product-card:nth-child(2) { animation-delay: 35ms; }
@@ -215,15 +226,16 @@ button {
 .product-card:nth-child(6) { animation-delay: 175ms; }
 
 .product-card:hover {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
-  transform: translateY(-3px);
+  border-color: #dadce0;
+  box-shadow: 0 8px 24px rgba(60, 64, 67, 0.12);
+  transform: translateY(-2px);
 }
 
 .product-image-wrap {
   position: relative;
-  aspect-ratio: 1.2;
+  aspect-ratio: 1.25;
   overflow: hidden;
-  background: #f5f5f7;
+  background: #f1f3f4;
 }
 
 .product-image {
@@ -267,10 +279,18 @@ button {
 }
 
 .product-category {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
   display: block;
-  margin-top: 8px;
-  color: var(--muted);
+  margin: 0;
+  padding: 6px 10px;
+  border: 1px solid rgba(218, 220, 224, 0.8);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #3c4043;
   font-size: 11px;
+  font-weight: 500;
   text-transform: capitalize;
 }
 
@@ -296,6 +316,7 @@ button {
 }
 
 .product-actions a {
+  font-weight: 500;
   color: var(--accent);
 }
 
@@ -316,8 +337,9 @@ button {
 
 .store-account button:focus-visible,
 .product-actions a:focus-visible,
-.store-wordmark:focus-visible {
-  outline: 3px solid rgba(0, 102, 204, 0.35);
+.store-wordmark:focus-visible,
+.catalog-add-link:focus-visible {
+  outline: 3px solid rgba(26, 115, 232, 0.3);
   outline-offset: 3px;
 }
 
@@ -426,6 +448,7 @@ button {
   margin-bottom: 38px;
   color: var(--accent);
   font-size: 13px;
+  font-weight: 500;
 }
 
 .flow-back-link:hover,
@@ -449,8 +472,9 @@ button {
 .flow-heading h1,
 .delete-panel h1 {
   margin: 0;
-  font-size: 38px;
-  font-weight: 600;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -1px;
   line-height: 1.2;
 }
 
@@ -465,8 +489,11 @@ button {
 .product-form {
   display: grid;
   gap: 24px;
-  padding-top: 26px;
-  border-top: 1px solid var(--line);
+  padding: 28px;
+  border: 1px solid #e8eaed;
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: 0 2px 8px rgba(60, 64, 67, 0.06);
 }
 
 .form-field {
@@ -482,8 +509,8 @@ button {
 .form-field input,
 .form-field textarea {
   width: 100%;
-  border: 1px solid #a1a1a6;
-  border-radius: 8px;
+  border: 1px solid #dadce0;
+  border-radius: 10px;
   background: var(--surface);
   color: var(--foreground);
   font: inherit;
@@ -507,7 +534,7 @@ button {
 .form-field input:focus,
 .form-field textarea:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.14);
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.14);
 }
 
 .form-actions,
@@ -521,13 +548,13 @@ button {
 .primary-action,
 .destructive-action {
   min-height: 42px;
-  padding: 0 20px;
+  padding: 0 22px;
   border: 0;
-  border-radius: 22px;
+  border-radius: 999px;
   color: #fff;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 550;
+  font-weight: 500;
   transition: background 150ms ease, transform 150ms ease;
 }
 
@@ -536,16 +563,16 @@ button {
 }
 
 .primary-action:hover {
-  background: #005bb5;
+  background: #1765cc;
   transform: translateY(-1px);
 }
 
 .destructive-action {
-  background: #c93440;
+  background: #d93025;
 }
 
 .destructive-action:hover {
-  background: #a92330;
+  background: #b3261e;
   transform: translateY(-1px);
 }
 
@@ -556,11 +583,11 @@ button {
 
 .delete-panel {
   margin-top: 8px;
-  padding: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 8px;
+  padding: 32px;
+  border: 1px solid #e8eaed;
+  border-radius: 20px;
   background: var(--surface);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.045);
+  box-shadow: 0 4px 16px rgba(60, 64, 67, 0.08);
   animation: intro-enter 420ms ease-out both;
 }
 
@@ -571,8 +598,8 @@ button {
   gap: 16px;
   margin: 26px 0 24px;
   padding: 14px;
-  border: 1px solid #e5e5e8;
-  border-radius: 8px;
+  border: 1px solid #e8eaed;
+  border-radius: 14px;
 }
 
 .delete-product-image {
@@ -580,8 +607,8 @@ button {
   width: 76px;
   aspect-ratio: 1;
   overflow: hidden;
-  border-radius: 6px;
-  background: #f5f5f7;
+  border-radius: 10px;
+  background: #f1f3f4;
 }
 
 .delete-product-image img {
@@ -617,8 +644,10 @@ button {
 .primary-action:focus-visible,
 .destructive-action:focus-visible,
 .flow-back-link:focus-visible,
-.secondary-action:focus-visible {
-  outline: 3px solid rgba(0, 102, 204, 0.35);
+.secondary-action:focus-visible,
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+  outline: 3px solid rgba(26, 115, 232, 0.3);
   outline-offset: 3px;
 }
 
@@ -638,6 +667,11 @@ button {
   .flow-heading h1,
   .delete-panel h1 {
     font-size: 32px;
+  }
+
+  .product-form {
+    gap: 20px;
+    padding: 22px 18px;
   }
 
   .delete-panel {
